@@ -1,0 +1,217 @@
+Microsoft Windows [Version 10.0.15063]
+(c) 2017 Microsoft Corporation. All rights reserved.
+
+C:\Users\Adam>cd..
+
+C:\Users>cd..
+
+C:\>cd program files
+
+C:\Program Files>cd MongoDB
+
+C:\Program Files\MongoDB>cd server
+
+C:\Program Files\MongoDB\Server>cd e.4
+The system cannot find the path specified.
+
+C:\Program Files\MongoDB\Server>cd bin
+The system cannot find the path specified.
+
+C:\Program Files\MongoDB\Server>cd 3.4
+
+C:\Program Files\MongoDB\Server\3.4>cd bin
+
+C:\Program Files\MongoDB\Server\3.4\bin>mongo
+MongoDB shell version v3.4.10
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.10
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        http://docs.mongodb.org/
+Questions? Try the support group
+        http://groups.google.com/group/mongodb-user
+Server has startup warnings:
+2017-11-11T07:58:23.936-0800 I CONTROL  [initandlisten]
+2017-11-11T07:58:23.936-0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-11-11T07:58:23.940-0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-11-11T07:58:23.941-0800 I CONTROL  [initandlisten]
+> use lesson db
+2017-11-11T11:21:59.443-0500 E QUERY    [thread1] Error: [lesson db] is not a valid database name :
+Mongo.prototype.getDB@src/mongo/shell/mongo.js:56:12
+shellHelper.use@src/mongo/shell/utils.js:684:10
+shellHelper@src/mongo/shell/utils.js:671:15
+@(shellhelp2):1:1
+> use lessondb
+switched to db lessondb
+> db
+lessondb
+> db.places.insert({"continent": "Africa", "country": "Morocco", "majorcities":["Casablanca","Fez", "Marrakech"]})
+WriteResult({ "nInserted" : 1 })
+> db.places.find()
+{ "_id" : ObjectId("5a07248589b041e1cb3a88b9"), "continent" : "Africa", "country" : "Morocco", "majorcities" : [ "Casablanca", "Fez", "Marrakech" ] }
+> db.places.find().pretty()
+{
+        "_id" : ObjectId("5a07248589b041e1cb3a88b9"),
+        "continent" : "Africa",
+        "country" : "Morocco",
+        "majorcities" : [
+                "Casablanca",
+                "Fez",
+                "Marrakech"
+        ]
+}
+> db.places.insert({"continent": "North America", "country": "United States", "majorcities":["Akron", "Cleveland"]})
+WriteResult({ "nInserted" : 1 })
+> db.places.find().pretty()
+{
+        "_id" : ObjectId("5a07248589b041e1cb3a88b9"),
+        "continent" : "Africa",
+        "country" : "Morocco",
+        "majorcities" : [
+                "Casablanca",
+                "Fez",
+                "Marrakech"
+        ]
+}
+{
+        "_id" : ObjectId("5a07267f89b041e1cb3a88ba"),
+        "continent" : "North America",
+        "country" : "United States",
+        "majorcities" : [
+                "Akron",
+                "Cleveland"
+        ]
+}
+> db.places.find({_id:5a07267f89b041e1cb3a88ba}).pretty()
+2017-11-11T11:36:36.735-0500 E QUERY    [thread1] SyntaxError: identifier starts immediately after numeric literal @(shell):1:20
+> db.places.find({"country":"United States"}).pretty()
+{
+        "_id" : ObjectId("5a07267f89b041e1cb3a88ba"),
+        "continent" : "North America",
+        "country" : "United States",
+        "majorcities" : [
+                "Akron",
+                "Cleveland"
+        ]
+}
+> db.places.update({"country":"Morocco"}, {$set:{"continent":"Antartica"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.places.find({"country":"Morocco"}).pretty()
+{
+        "_id" : ObjectId("5a07248589b041e1cb3a88b9"),
+        "continent" : "Antartica",
+        "country" : "Morocco",
+        "majorcities" : [
+                "Casablanca",
+                "Fez",
+                "Marrakech"
+        ]
+}
+> db.places.update({"continent": "Antartica"}, {$push: {"majorcities":"crumb"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.places.find()
+{ "_id" : ObjectId("5a07248589b041e1cb3a88b9"), "continent" : "Antartica", "country" : "Morocco", "majorcities" : [ "Casablanca", "Fez", "Marrakech", "crumb" ] }
+{ "_id" : ObjectId("5a07267f89b041e1cb3a88ba"), "continent" : "North America", "country" : "United States", "majorcities" : [ "Akron", "Cleveland" ] }
+> db.places.find().pretty()
+{
+        "_id" : ObjectId("5a07248589b041e1cb3a88b9"),
+        "continent" : "Antartica",
+        "country" : "Morocco",
+        "majorcities" : [
+                "Casablanca",
+                "Fez",
+                "Marrakech",
+                "crumb"
+        ]
+}
+{
+        "_id" : ObjectId("5a07267f89b041e1cb3a88ba"),
+        "continent" : "North America",
+        "country" : "United States",
+        "majorcities" : [
+                "Akron",
+                "Cleveland"
+        ]
+}
+> ^C
+bye
+
+C:\Program Files\MongoDB\Server\3.4\bin>mongo
+MongoDB shell version v3.4.10
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.10
+Server has startup warnings:
+2017-11-13T11:11:09.950-0800 I CONTROL  [initandlisten]
+2017-11-13T11:11:09.951-0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-11-13T11:11:09.954-0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-11-13T11:11:09.955-0800 I CONTROL  [initandlisten]
+> use classdb
+switched to db classdb
+> db
+classdb
+> db.class.insert({"row": "4", "name": "Adam", "os":"Win", "hobbies": ["BJJ", "Video Games", "Programming"], "side": "right"})
+WriteResult({ "nInserted" : 1 })
+> db.class.insert({"row": "2", "name": "Zoli", "os":"Mac", "hobbies": ["Tennis", "Music", "Math"], "side": "right"})
+WriteResult({ "nInserted" : 1 })
+> db.class.find().pretty()
+{
+        "_id" : ObjectId("5a09f027e25fa89ecf632170"),
+        "row" : "4",
+        "name" : "Adam",
+        "os" : "Win",
+        "hobbies" : [
+                "BJJ",
+                "Video Games",
+                "Programming"
+        ],
+        "side" : "right"
+}
+{
+        "_id" : ObjectId("5a09f0cae25fa89ecf632171"),
+        "row" : "2",
+        "name" : "Zoli",
+        "os" : "Mac",
+        "hobbies" : [
+                "Tennis",
+                "Music",
+                "Math"
+        ],
+        "side" : "right"
+}
+> db.class.find().pretty()
+{
+        "_id" : ObjectId("5a09f027e25fa89ecf632170"),
+        "row" : "4",
+        "name" : "Adam",
+        "os" : "Win",
+        "hobbies" : [
+                "BJJ",
+                "Video Games",
+                "Programming"
+        ],
+        "side" : "right"
+}
+{
+        "_id" : ObjectId("5a09f0cae25fa89ecf632171"),
+        "row" : "2",
+        "name" : "Zoli",
+        "os" : "Mac",
+        "hobbies" : [
+                "Tennis",
+                "Music",
+                "Math"
+        ],
+        "side" : "right"
+}
+{
+        "_id" : ObjectId("5a09f169621793732c6bbb59"),
+        "name" : "Luke",
+        "os" : "Windows",
+        "row" : 1,
+        "hobbies" : [
+                "coding",
+                "drawing",
+                "math",
+                "HARRY POTTER!"
+        ]
