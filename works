@@ -1,0 +1,4 @@
+db.class.insert({"row": "2", "name": "Zoli", "os":"Mac", "hobbies": ["Tennis", "Music", "Math"], "side": "right"})
+
+
+db.class.find({"name":"Zoli"}).pretty()
